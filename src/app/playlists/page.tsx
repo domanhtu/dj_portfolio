@@ -1,7 +1,7 @@
 'use client'
 
 import useGetData from '@/hooks/useGetData';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, Suspense } from 'react';
 
 function getArtists(A: any) {
   return A.map(artist => artist.name).join(', ');
@@ -26,10 +26,10 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-lg sm:p-10 p-4 bg-blue-200 border rounded-[20px] shadow-2xl">
       {loading ? <p>Loading</p> : <>
-      <h1 className="my-2 text-3xl">Playlists</h1>
+        <h1 className="my-2 text-3xl">Playlists</h1>
         <ul className='flex cursor-pointer justify-stretch'>
           {playlists.map((plist) => (
-            <li onClick={() => setPlaylist(plist.name)} key={plist.id} style={{minWidth: "65px"}} className={`mx-1 p-3 text-center shadow-2xl rounded-lg hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ${plist.id === playlist ? "underline underline-offset-4 text-gray-0  bg-indigo-300" : "text-gray-500 bg-white"}`}>{plist.name}</li>
+            <li onClick={() => setPlaylist(plist.name)} key={plist.id} style={{minWidth: "65px"}} className={`mx-1 p-3 text-center shadow-2xl rounded-lg hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ${plist.name === playlist ? "underline underline-offset-4 text-gray-0  bg-indigo-300" : "text-gray-500 bg-white"}`}>{plist.name}</li>
           ))
           }
         </ul>
