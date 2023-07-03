@@ -24,12 +24,12 @@ export default function Page() {
     }, []);
 
   return (
-    <div className="mx-auto max-w-lg sm:p-10 p-4 bg-blue-200 border rounded-[20px] shadow-2xl">
+    <div className="mx-auto max-w-lg sm:p-10 p-4 backdrop-blur-sm bg-gradient-radial via-[#0040ff4b] from-[#1540c03d] dark:bg-zinc-800 dark:via-[#0141ff77] dark:from-blue-900 border rounded-[20px] shadow-2xl">
       {loading ? <p>Loading</p> : <>
-        <h1 className="my-2 text-3xl">Playlists</h1>
+        <h1 className="my-2 text-3xl dark:text-neutral-200">Playlists</h1>
         <ul className='flex cursor-pointer justify-stretch'>
           {playlists.map((plist) => (
-            <li onClick={() => setPlaylist(plist.name)} key={plist.id} style={{minWidth: "65px"}} className={`mx-1 p-3 text-center shadow-2xl rounded-lg hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ${plist.name === playlist ? "underline underline-offset-4 text-gray-0  bg-indigo-300" : "text-gray-500 bg-white"}`}>{plist.name}</li>
+            <li onClick={() => setPlaylist(plist.name)} key={plist.id} className={`mx-1 p-3 min-w-[65px] text-center shadow-2xl rounded-lg hover:-translate-y-1 hover:scale-110 dark:bg-zinc-900 dark:hover:bg-blue-950 hover:bg-indigo-400 duration-300 ${plist.name === playlist ? "underline underline-offset-4 bg-indigo-300" : "dark:text-gray-300 text-gray-500 bg-white"}`}>{plist.name}</li>
           ))
           }
         </ul>
@@ -40,8 +40,8 @@ export default function Page() {
             <div className="flex gap-x-4">
               <img className="h-20 w-20 flex-none" src={track.track.album.images[0].url} alt="" />
               <div className="min-w-0 flex-auto">
-                <p className="font-semibold leading-6 text-gray-900">{track.track.name}</p>
-                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{getArtists(track.track.artists)}</p>
+                <p className="font-semibold  leading-6 dark:text-neutral-200 text-gray-900">{track.track.name}</p>
+                <p className="mt-1 truncate text-xs leading-5 dark:text-gray-400 text-gray-600">{getArtists(track.track.artists)}</p>
               </div>
             </div>
           </li>
