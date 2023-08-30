@@ -24,7 +24,7 @@ export default function Page() {
     }, []);
 
   return (
-    <div className="mx-auto max-w-lg sm:p-10 p-4 backdrop-blur-sm bg-gradient-radial via-[#0040ff4b] from-[#1540c03d] dark:bg-zinc-800 dark:via-[#0141ff77] dark:from-blue-900 border rounded-[20px] shadow-2xl">
+    <div className="mx-auto max-w-lg sm:p-10 p-4 backdrop-blur-sm bg-gradient-radial via-[#0040ff4b] from-[#1540c03d] dark:bg-zinc-800 dark:via-[#0141ff77] dark:from-blue-900 lg:border lg:rounded-[20px] shadow-2xl">
       {loading ? <p>Loading</p> : <>
         <h1 className="my-2 text-3xl dark:text-neutral-200">Playlists</h1>
         <ul className='flex cursor-pointer justify-stretch'>
