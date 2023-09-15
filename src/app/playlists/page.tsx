@@ -3,7 +3,7 @@
 import useGetData from '@/hooks/useGetData';
 import React, { useState, useEffect, useCallback, Suspense } from 'react';
 
-function getArtists(A: any) {
+function getArtists(A: ArtistArray) {
   return A.map(artist => artist.name).join(', ');
 }
 
@@ -35,7 +35,7 @@ export default function Page() {
         </ul>
       <h2 className="my-2 text-xl">Songs</h2>
       <ul role="list" className="divide-y divide-gray-100">
-        {data && data[playlist].map((track) => (
+        {data && data[playlist].map((track: Track) => (
           <li key={track.track.id} className="flex justify-between gap-x-6 py-5">
             <div className="flex gap-x-4">
               <img className="h-20 w-20 flex-none" src={track.track.album.images[0].url} alt="" />

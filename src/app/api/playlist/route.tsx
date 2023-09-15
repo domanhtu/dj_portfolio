@@ -33,7 +33,7 @@ async function getToken() {
   return data.access_token;
 }
 
-export async function GET(req: NextApiRequest) {
+export async function GET() {
   let response = NextResponse.next();
   response.headers.set("Content-Type", "application/json");
   const token = await getToken();

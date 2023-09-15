@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
 const useGetData = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<PlaylistData | null>(null);
   const [loading, setLoading] = useState(true);
 
   const call = useCallback(async () => {
