@@ -9,7 +9,9 @@ const useGetData = () => {
     try {
       setLoading(true);
       const res = await fetch(`https://tutido.vercel.app/${endpoint}`, {
-        method: "GET",
+        method: "GET",headers: {
+          "Cache-Control": "no-cache",
+        },
       });
 
       if (!res.ok) {

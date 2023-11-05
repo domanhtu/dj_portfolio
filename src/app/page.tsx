@@ -29,7 +29,7 @@ export default function Home() {
                 <span className="underline">DJ</span>
                 <div>
                   <span>Výběr písniček: </span>
-                  <Link className="text-yellow-200" href={"/playlists"}>
+                  <Link className="text-yellow-200 underline" href={"/playlists"}>
                     Playlist
                   </Link>
                 </div>

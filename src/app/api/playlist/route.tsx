@@ -4,11 +4,12 @@ const responseData: any = {};
 const promises: any = [];
 
 const playlists = [
-  { name: "90s", id: "4Um9u3HYmcw0gWS46dTVSo" },
-  { name: "00s", id: "7nfAVGIqoOZLKbiR7xMtA8" },
-  { name: "Big Room", id: "6x6uMgAvaWe6Vj4XwYtGov" },
-  { name: "EDM", id: "1QjABQdpImf51EWfrFDolK" },
-  { name: "Rap", id: "3k2wkIT5tGwKcxCzRC08Kl" },
+  { name: "90s", id: "6QAJ4WPgHs2th82vIdXA2W" },
+  { name: "00s", id: "6TgoUGXZ3cVbKkfwoLut6L" },
+  { name: "Big Room", id: "5VDJKbU24QPOVanfdqutKW" },
+  { name: "EDM", id: "4JipZ6DWrys6GuxnTuzESY" },
+  { name: "Rap", id: "1qnRl1RSr1QbpZT1RyT7Kc" },
+  { name: "CZ", id: "3enOKVpK5me2n7GDKjZsLT" },
 ];
 
 async function getToken() {
@@ -20,6 +21,7 @@ async function getToken() {
 
   const headers = {
     "Content-Type": "application/x-www-form-urlencoded",
+    "Cache-Control": "no-cache",
   };
 
   const res = await fetch(`https://accounts.spotify.com/api/token`, {
@@ -50,14 +52,14 @@ export async function GET() {
         },
         method: "GET",
       })
-      .then((res) => res.json()
-      .then((data) => {
-          responseData[e.name] = JSON.parse(JSON.stringify(data.items));
+        .then((res) =>
+          res.json().then((data) => {
+            responseData[e.name] = JSON.parse(JSON.stringify(data.items));
+          })
+        )
+        .catch((err) => {
+          console.error(err);
         })
-      )
-      .catch((err) => {
-        console.error(err);
-      })
     );
   });
 
