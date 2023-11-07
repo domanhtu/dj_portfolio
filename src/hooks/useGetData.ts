@@ -8,6 +8,7 @@ const useGetData = () => {
     const endpoint = "api/playlist";
     try {
       setLoading(true);
+      // http://localhost:3000
       const res = await fetch(`https://tutido.vercel.app/${endpoint}`, {
         method: "GET",headers: {
           "Cache-Control": "no-cache",
