@@ -11,6 +11,7 @@ const playlists = [
   { name: "EDM", id: "4JipZ6DWrys6GuxnTuzESY" },
   { name: "Rap", id: "1qnRl1RSr1QbpZT1RyT7Kc" },
   { name: "CZ", id: "3enOKVpK5me2n7GDKjZsLT" },
+  { name: "TikTok", id: "6zEAvoMmr2aLYsEuPjsb6c"}
 ];
 
 async function getToken() {
