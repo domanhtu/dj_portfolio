@@ -9,14 +9,15 @@ export default function Home() {
           <div className="space-y-8 lg:w-2/3">
             <h1 className="text-7xl lg:text-8xl">Tuti Do</h1>
             <div className="lg:flex place-items-center space-y-6 lg:space-y-0 lg:space-x-20 text-xl">
-              <p className="lg:w-1/2">
-                Student 5. ročníku školy České vysoké učení technické v Praze na
-                Fakultě informačních technologií
-              </p>
+              <div className="lg:w-1/2">
+                <p>Full-stack developer</p>
+                <p>Absolvent školy České vysoké učení technické v Praze na
+                Fakultě informačních technologií</p>
+              </div>
               <div className="lg:w-1/3">
                 <span className="underline">Webový vývojář</span>
                 <ul>
-                  <li>Tech stack</li>
+                  <li>Rails on Ruby</li>
                   <li>C# - Blazor framework</li>
                   <li>PHP - Symfony framework</li>
                   <li>Python - Django framework</li>

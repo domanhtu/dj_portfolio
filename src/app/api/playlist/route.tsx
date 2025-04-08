@@ -14,9 +14,10 @@ const playlists = [
   { name: "TikTok", id: "6zEAvoMmr2aLYsEuPjsb6c"}
 ];
 
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+
 async function getToken() {
-  const CLIENT_ID = "97386e4d9a374c589bfbb3f32e3d52dc";
-  const CLIENT_SECRET = "4808c1ed22c04900b2315c7a88646de7";
   const body = {
     grant_type: "client_credentials",
   };
@@ -29,7 +30,7 @@ async function getToken() {
   const res = await fetch(`https://accounts.spotify.com/api/token`, {
     method: "POST",
     headers: headers,
-    body: "grant_type=client_credentials&client_id=97386e4d9a374c589bfbb3f32e3d52dc&client_secret=4808c1ed22c04900b2315c7a88646de7",
+    body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
   });
 
   const data = await res.json();
