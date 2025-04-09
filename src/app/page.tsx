@@ -17,7 +17,7 @@ export default function Home() {
               <div className="lg:w-1/3">
                 <span className="underline">Webový vývojář</span>
                 <ul>
-                  <li>Rails on Ruby</li>
+                  <li>Ruby on Rails</li>
                   <li>C# - Blazor framework</li>
                   <li>PHP - Symfony framework</li>
                   <li>Python - Django framework</li>
