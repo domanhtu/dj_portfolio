@@ -8,9 +8,9 @@ const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
 async function getToken() {
-  const body = {
+  const body = new URLSearchParams({
     grant_type: "client_credentials",
-  };
+  });
 
   const headers = {
     "Content-Type": "application/x-www-form-urlencoded",
@@ -32,11 +32,12 @@ export async function GET() {
   response.headers.set("Content-Type", "application/json");
   const token = await getToken();
 
-  playlists.forEach(async (e) => {
-    const endpoint =
-      "v1/playlists/" +
-      e.id +
-      "/tracks?fields=items%28track%28id%2C+name%2C+album%28name%2C+images%28url%29%29%2Cartists%28name%29%29%29";
+  playlists.forEach(async (playlist) => {
+    const params = new URLSearchParams({
+      fields: "items(track(id,name,album(name,images(url)),artists(name)))",
+    });
+
+    const endpoint = `v1/playlists/${playlist.id}/tracks?${params.toString()}`;
 
     promises.push(
       fetch(`https://api.spotify.com/${endpoint}`, {
@@ -47,7 +48,7 @@ export async function GET() {
       })
         .then((res) =>
           res.json().then((data) => {
-            responseData[e.name] = JSON.parse(JSON.stringify(data.items));
+            responseData[playlist.name] = JSON.parse(JSON.stringify(data.items));
           })
         )
         .catch((err) => {

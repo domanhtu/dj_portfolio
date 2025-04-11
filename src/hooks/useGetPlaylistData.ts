@@ -3,7 +3,6 @@ import { useCallback, useState } from "react";
 const useGetPlaylistData = () => {
   const [data, setData] = useState<PlaylistData | null>(null);
   const [loading, setLoading] = useState(true);
-  const isDev = process.env.NODE_ENV === "development";
   const call = useCallback(async () => {
     const endpoint = "api/playlist";
     try {

@@ -2,6 +2,7 @@
 
 import useGetPlaylistData from '@/hooks/useGetPlaylistData';
 import Link from 'next/link';
+import Image from 'next/image';
 import React, { useState, useEffect, useCallback, Suspense } from 'react';
 import { playlists } from "@/constants/constants";
 
@@ -33,7 +34,14 @@ export default function Page() {
         {data && data[playlist].map((track: Track) => (
           <li key={track.track.id} className="flex justify-between gap-x-6 py-5 min-w-[340px] sm:min-w-[400px]">
             <div className="flex gap-x-4">
-              <img className="h-20 w-20 flex-none" src={track.track.album.images[0].url} alt="" />
+              <Image
+                className="flex-none"
+                src={track.track.album.images[0].url}
+                alt={track.track.name}
+                width={80}
+                height={80}
+                quality={100}
+              />
               <div className="min-w-0 flex-auto">
                 <p className="font-semibold  leading-6 dark:text-neutral-200 text-gray-900">{track.track.name}</p>
                 <p className="mt-1 truncate text-xs leading-5 dark:text-gray-400 text-gray-600">{getArtists(track.track.artists)}</p>
