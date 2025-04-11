@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-const useGetData = () => {
+const useGetPlaylistData = () => {
   const [data, setData] = useState<PlaylistData | null>(null);
   const [loading, setLoading] = useState(true);
   const isDev = process.env.NODE_ENV === "development";
@@ -31,4 +31,4 @@ const useGetData = () => {
   return { data, loading, call };
 };
 
-export default useGetData;
+export default useGetPlaylistData;

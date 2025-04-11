@@ -1,6 +1,6 @@
 'use client'
 
-import useGetData from '@/hooks/useGetData';
+import useGetPlaylistData from '@/hooks/useGetPlaylistData';
 import Link from 'next/link';
 import React, { useState, useEffect, useCallback, Suspense } from 'react';
 import { playlists } from "@/constants/constants";
@@ -11,7 +11,7 @@ function getArtists(A: ArtistArray) {
 
 export default function Page() {
   const [playlist, setPlaylist] = useState('90s');
-  const {data, loading, call: getData} = useGetData()
+  const {data, loading, call: getData} = useGetPlaylistData()
 
   useEffect(() => {
     getData();
