@@ -13,9 +13,8 @@ type Track = {
       name: string;
     }[];
   };
-}
+};
 
 type PlaylistData = {
-    [playlistName: string]: Track[];
-  }
-  
+  [playlistName: string]: Track[];
+};

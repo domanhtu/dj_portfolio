@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import GitHubIcon from "@/components/icons/GitHubIcon";
-import InstagramIcon from "@/components/icons/InstagramIcon";
-import LinkedInIcon from "@/components/icons/LinkedInIcon";
+import Image from 'next/image';
+import Link from 'next/link';
+import GitHubIcon from '@/components/icons/GitHubIcon';
+import InstagramIcon from '@/components/icons/InstagramIcon';
+import LinkedInIcon from '@/components/icons/LinkedInIcon';
 
 export default function Home() {
   return (
@@ -14,8 +14,10 @@ export default function Home() {
             <div className="lg:flex place-items-center space-y-6 lg:space-y-0 lg:space-x-20 text-xl">
               <div className="lg:w-1/2">
                 <p>Full-stack developer</p>
-                <p>Absolvent školy České vysoké učení technické v Praze na
-                Fakultě informačních technologií</p>
+                <p>
+                  Absolvent školy České vysoké učení technické v Praze na
+                  Fakultě informačních technologií
+                </p>
               </div>
               <div className="lg:w-1/3">
                 <span className="underline">Webový vývojář</span>
@@ -33,7 +35,10 @@ export default function Home() {
                 <span className="underline">DJ</span>
                 <div>
                   <span>Výběr písniček: </span>
-                  <Link className="text-yellow-200 underline" href={"/playlists"}>
+                  <Link
+                    className="text-yellow-200 underline"
+                    href={'/playlists'}
+                  >
                     Playlist
                   </Link>
                 </div>
