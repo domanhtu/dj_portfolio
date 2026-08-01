@@ -8,6 +8,7 @@ const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- documented next-themes hydration-mismatch workaround
     setMounted(true);
   }, []);
 
@@ -21,7 +22,7 @@ const ThemeSwitch = () => {
         <input
           type="checkbox"
           className="sr-only peer checked"
-          onChange={(e) => {
+          onChange={() => {
             if (theme === 'light') {
               setTheme('dark');
             } else {

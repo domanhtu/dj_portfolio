@@ -1,7 +1,7 @@
 type ArtistArray = { name: string }[];
 
 type Track = {
-  track: {
+  item: {
     id: string;
     name: string;
     album: {

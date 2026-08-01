@@ -47,24 +47,24 @@ export default function Page() {
             {data &&
               data[playlist].map((track: Track) => (
                 <li
-                  key={track.track.id}
+                  key={track.item.id}
                   className="flex justify-between gap-x-6 py-5 min-w-[340px] sm:min-w-[400px]"
                 >
                   <div className="flex gap-x-4">
                     <Image
                       className="flex-none"
-                      src={track.track.album.images[0].url}
-                      alt={track.track.name}
+                      src={track.item.album.images[0].url}
+                      alt={track.item.name}
                       width={80}
                       height={80}
                       quality={100}
                     />
                     <div className="min-w-0 flex-auto">
                       <p className="font-semibold  leading-6 dark:text-neutral-200 text-gray-900">
-                        {track.track.name}
+                        {track.item.name}
                       </p>
                       <p className="mt-1 truncate text-xs leading-5 dark:text-gray-400 text-gray-600">
-                        {getArtists(track.track.artists)}
+                        {getArtists(track.item.artists)}
                       </p>
                     </div>
                   </div>

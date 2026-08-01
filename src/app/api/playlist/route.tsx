@@ -1,62 +1,74 @@
 import { NextResponse } from 'next/server';
 import { playlists } from '@/constants/constants';
 
-const responseData: any = {};
-const promises: any = [];
-
-const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
-const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+const basicAuth = Buffer.from(
+  `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+).toString('base64');
 
 async function getToken() {
-  const body = new URLSearchParams({
-    grant_type: 'client_credentials',
-  });
-
-  const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Cache-Control': 'no-cache',
-  };
-
   const res = await fetch(`https://accounts.spotify.com/api/token`, {
     method: 'POST',
-    headers: headers,
-    body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Cache-Control': 'no-cache',
+      Authorization: `Basic ${basicAuth}`,
+    },
+    body: new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: process.env.SPOTIFY_REFRESH_TOKEN!,
+    }),
   });
 
-  const data = await res.json();
+  const bodyText = await res.text();
+  if (!res.ok) {
+    throw new Error(`Spotify token request failed: ${res.status} ${bodyText}`);
+  }
+
+  const data = JSON.parse(bodyText);
   return data.access_token;
 }
 
 export async function GET() {
-  let response = NextResponse.next();
-  response.headers.set('Content-Type', 'application/json');
-  const token = await getToken();
+  const responseData: PlaylistData = {};
 
-  playlists.forEach(async (playlist) => {
+  let token: string;
+  try {
+    token = await getToken();
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : String(err) },
+      { status: 502 }
+    );
+  }
+
+  const promises: Promise<void>[] = playlists.map(async (playlist) => {
     const params = new URLSearchParams({
-      fields: 'items(track(id,name,album(name,images(url)),artists(name)))',
+      fields: 'items(item(id,name,album(name,images(url)),artists(name)))',
     });
 
-    const endpoint = `v1/playlists/${playlist.id}/tracks?${params.toString()}`;
+    const endpoint = `v1/playlists/${playlist.id}/items?${params.toString()}`;
 
-    promises.push(
-      fetch(`https://api.spotify.com/${endpoint}`, {
+    try {
+      const res = await fetch(`https://api.spotify.com/${endpoint}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
         method: 'GET',
-      })
-        .then((res) =>
-          res.json().then((data) => {
-            responseData[playlist.name] = JSON.parse(
-              JSON.stringify(data.items)
-            );
-          })
-        )
-        .catch((err) => {
-          console.error(err);
-        })
-    );
+      });
+
+      const bodyText = await res.text();
+      if (!res.ok) {
+        throw new Error(
+          `Spotify tracks request failed for "${playlist.name}": ${res.status} ${bodyText}`
+        );
+      }
+
+      const data = JSON.parse(bodyText);
+      responseData[playlist.name] = data.items;
+    } catch (err) {
+      console.error(err);
+    }
   });
 
   await Promise.all(promises);

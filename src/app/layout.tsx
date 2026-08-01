@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-fit bg-no-repeat bg-gradient-to-b dark:from-zinc-900 dark:to-zinc-800 from-[#d3dcf5] to-[#e6e6e6]">
         <Provider>
           <Navbar />

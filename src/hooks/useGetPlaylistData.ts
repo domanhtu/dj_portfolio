@@ -4,11 +4,9 @@ const useGetPlaylistData = () => {
   const [data, setData] = useState<PlaylistData | null>(null);
   const [loading, setLoading] = useState(true);
   const call = useCallback(async () => {
-    const endpoint = 'api/playlist';
     try {
       setLoading(true);
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-      const res = await fetch(`${baseUrl}/${endpoint}`, {
+      const res = await fetch('/api/playlist', {
         method: 'GET',
         headers: {
           'Cache-Control': 'no-cache',
@@ -21,8 +19,8 @@ const useGetPlaylistData = () => {
 
       const newData = await res.json();
       setData(newData);
-    } catch (err: any) {
-      throw new Error(err.message);
+    } catch (err) {
+      throw new Error(err instanceof Error ? err.message : String(err));
     } finally {
       setLoading(false);
     }
