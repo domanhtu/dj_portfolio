@@ -3,7 +3,7 @@
 import useGetPlaylistData from '@/hooks/useGetPlaylistData';
 import Link from 'next/link';
 import Image from 'next/image';
-import React, { useState, useEffect, useCallback, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { playlists } from '@/constants/constants';
 
 function getArtists(A: ArtistArray) {
@@ -52,7 +52,7 @@ export default function Page() {
                 >
                   <div className="flex gap-x-4">
                     <Image
-                      className="flex-none"
+                      className="flex-none w-20 h-20"
                       src={track.item.album.images[0].url}
                       alt={track.item.name}
                       width={80}
