@@ -24,7 +24,7 @@ export default function Page() {
         PLAYLISTY
       </p>
       <h1 className="font-mono text-3xl font-bold text-gray-900 dark:text-neutral-200">
-        Playlists
+        {playlist}
       </h1>
 
       <div className="mt-6 flex flex-wrap gap-2">
