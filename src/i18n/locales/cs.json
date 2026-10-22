@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "playlist": "Playlist",
+    "about": "O mně"
+  },
+  "hero": {
+    "eyebrow": "VÍTEJTE",
+    "headshotAlt": "Tuti Do",
+    "djAlt1": "Tuti Do za DJ pultem",
+    "djAlt2": "Tuti Do mixuje pro davem",
+    "dev": {
+      "title": "Frontend web a mobile developer",
+      "role": "Full-stack developer",
+      "description": "Absolvent s inžernýrským titulem ze školy České vysoké učení technické v Praze na Fakultě informačních technologií v oboru Webové inženýrství"
+    },
+    "dj": {
+      "title": "Open-format\nDJ",
+      "role": "Freelance eventový DJ",
+      "description": "Zkušený DJ hrající na maturitních plesech, afterparties, firemních večírcích, svatbách nebo i v Pražských barech.",
+      "link": "Playlist"
+    }
+  },
+  "projects": {
+    "eyebrow": "PROJEKTY",
+    "heading": "Na čem jsem pracoval",
+    "link": "Odkaz",
+    "items": {
+      "squared": {
+        "name": "Squared & Auctify",
+        "company": "Sinfin · 2023–2025",
+        "description": "Ruby on Rails vývojář — bug-fixing a nové funkce pro CMS Squared, spoluautor nového auction enginu pro Auctify."
+      },
+      "talsec": {
+        "name": "Talsec portál",
+        "company": "KOALA42 · 2025–2025",
+        "description": "Dokončení React CRM portálu pro Talsec (App & API protection SDK) s grafy a reporty."
+      },
+      "retribe": {
+        "name": "ReTribe",
+        "company": "KOALA42 · 2025–2026",
+        "description": "Flutter mobilní aplikace pro iOS a Android spojující bývalé profesionální sportovce — dotazníky, feed a chat."
+      },
+      "portfolio": {
+        "name": "Portfolio web",
+        "company": "Osobní projekt",
+        "description": "Next.js web s playlisty tahanými živě ze Spotify API pro DJing."
+      }
+    }
+  },
+  "playlists": {
+    "eyebrow": "PLAYLISTY",
+    "songs": "Songs",
+    "spotifyLink": "Otevřít na Spotify"
+  }
+}

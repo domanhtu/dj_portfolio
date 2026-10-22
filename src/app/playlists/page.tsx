@@ -4,6 +4,7 @@ import useGetPlaylistData from '@/hooks/useGetPlaylistData';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { playlists } from '@/constants/constants';
 
 function getArtists(A: ArtistArray) {
@@ -13,6 +14,7 @@ function getArtists(A: ArtistArray) {
 export default function Page() {
   const [playlist, setPlaylist] = useState('90s');
   const { data, loading, call: getData } = useGetPlaylistData();
+  const { t } = useTranslation();
 
   useEffect(() => {
     getData();
@@ -21,7 +23,7 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-xl rounded-2xl border border-[#224f95]/10 bg-gradient-radial from-[#224f95]/30 via-[#3a62a8]/20 to-[#224f95]/10 p-4 shadow-2xl backdrop-blur-sm dark:border-blue-300/10 dark:from-[#2a5aa8] dark:via-[#16325e] dark:to-[#0d1f3d] sm:p-8 lg:rounded-[20px]">
       <p className="mb-1 font-mono text-xs tracking-[0.3em] text-[#224f95] dark:text-blue-300">
-        PLAYLISTY
+        {t('playlists.eyebrow')}
       </p>
       <h1 className="font-mono text-3xl font-bold text-gray-900 dark:text-neutral-200">
         {playlist}
@@ -53,11 +55,11 @@ export default function Page() {
         rel="noopener noreferrer"
         className="mt-4 inline-flex font-mono text-sm text-yellow-600 underline underline-offset-4 transition-colors hover:text-yellow-500 dark:text-yellow-200 dark:hover:text-yellow-100"
       >
-        Otevřít na Spotify
+        {t('playlists.spotifyLink')}
       </Link>
 
       <h2 className="mb-2 mt-8 border-b border-[#224f95]/10 pb-2 font-mono text-xs uppercase tracking-widest text-[#224f95] dark:border-blue-300/10 dark:text-blue-300">
-        Songs
+        {t('playlists.songs')}
       </h2>
 
       {loading ? (

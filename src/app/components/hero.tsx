@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import GitHubIcon from '@/components/icons/GitHubIcon';
 import InstagramIcon from '@/components/icons/InstagramIcon';
 import LinkedInIcon from '@/components/icons/LinkedInIcon';
@@ -30,6 +33,8 @@ const socials = [
 ];
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#16325e] via-[#224f95] to-[#16325e] font-mono text-white">
       <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl" />
@@ -39,7 +44,7 @@ export default function Hero() {
         <div className="space-y-10">
           <div>
             <p className="mb-2 text-sm tracking-[0.3em] text-blue-200">
-              VÍTEJTE
+              {t('hero.eyebrow')}
             </p>
             <h1 className="text-6xl font-bold leading-none lg:text-8xl">
               Tuti Do
@@ -49,13 +54,11 @@ export default function Hero() {
           <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
             <div>
               <h2 className="mb-3 border-b border-white/20 pb-2 text-sm uppercase tracking-widest text-blue-200">
-                Frontend web a mobile developer
+                {t('hero.dev.title')}
               </h2>
-              <p className="text-lg">Full-stack developer</p>
+              <p className="text-lg">{t('hero.dev.role')}</p>
               <p className="mt-2 text-sm text-blue-100">
-                Absolvent s inžernýrským titulem ze školy České vysoké učení
-                technické v Praze na Fakultě informačních technologií v oboru
-                Webové inženýrství
+                {t('hero.dev.description')}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {skills.map((skill) => (
@@ -70,21 +73,18 @@ export default function Hero() {
             </div>
 
             <div>
-              <h2 className="mb-3 border-b border-white/20 pb-2 text-sm uppercase tracking-widest text-blue-200">
-                Open-format
-                <br />
-                DJ
+              <h2 className="mb-3 whitespace-pre-line border-b border-white/20 pb-2 text-sm uppercase tracking-widest text-blue-200">
+                {t('hero.dj.title')}
               </h2>
-              <p className="text-lg">Freelance eventový DJ</p>
+              <p className="text-lg">{t('hero.dj.role')}</p>
               <p className="mt-2 text-sm text-blue-100">
-                Zkušený DJ hrající na maturitních plesech, afterparties,
-                firemních večírcích, svatbách nebo i v Pražských barech.
+                {t('hero.dj.description')}
               </p>
               <Link
                 href="/playlists"
                 className="mt-2 inline-flex items-center gap-1 text-yellow-200 underline underline-offset-4 transition-colors hover:text-yellow-100"
               >
-                Playlist
+                {t('hero.dj.link')}
               </Link>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function Hero() {
           <div className="absolute left-1/2 top-0 h-72 w-56 -translate-x-1/2 overflow-hidden rounded-3xl border-4 border-white/20 shadow-2xl sm:h-80 sm:w-64 lg:left-1/4 lg:h-[22rem] lg:w-72">
             <Image
               src="/headshot-1.jpg"
-              alt="Tuti Do"
+              alt={t('hero.headshotAlt')}
               fill
               sizes="(min-width: 1024px) 18rem, (min-width: 640px) 16rem, 14rem"
               className="object-cover object-top"
@@ -121,7 +121,7 @@ export default function Hero() {
           <div className="absolute bottom-0 left-0 h-36 w-28 -rotate-6 overflow-hidden rounded-2xl border-4 border-white/20 shadow-2xl sm:h-44 sm:w-36 lg:h-48 lg:w-40">
             <Image
               src="/dj-2.JPG"
-              alt="Tuti Do za DJ pultem"
+              alt={t('hero.djAlt1')}
               fill
               sizes="(min-width: 1024px) 10rem, 9rem"
               className="object-cover"
@@ -132,7 +132,7 @@ export default function Hero() {
           <div className="absolute bottom-4 right-0 h-28 w-40 rotate-6 overflow-hidden rounded-2xl border-4 border-white/20 shadow-2xl sm:h-32 sm:w-48 lg:h-40 lg:w-56">
             <Image
               src="/dj-1.JPG"
-              alt="Tuti Do mixuje pro davem"
+              alt={t('hero.djAlt2')}
               fill
               sizes="(min-width: 1024px) 14rem, 12rem"
               className="object-cover"

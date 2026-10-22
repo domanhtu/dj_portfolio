@@ -1,53 +1,35 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import ScrollReveal from './scrollReveal';
 
 const projects = [
+  { id: 'squared', stack: 'Ruby on Rails' },
+  { id: 'talsec', stack: 'React', href: 'https://my.talsec.app/' },
+  { id: 'retribe', stack: 'Flutter', href: 'https://retribecollective.com/' },
   {
-    name: 'Squared & Auctify',
-    company: 'Sinfin · 2023–2025',
-    description:
-      'Ruby on Rails vývojář — bug-fixing a nové funkce pro CMS Squared, spoluautor nového auction enginu pro Auctify.',
-    stack: 'Ruby on Rails',
-  },
-  {
-    name: 'Talsec portál',
-    company: 'KOALA42 · 2025–2025',
-    description:
-      'Dokončení React CRM portálu pro Talsec (App & API protection SDK) s grafy a reporty.',
-    stack: 'React',
-    href: 'https://my.talsec.app/',
-  },
-  {
-    name: 'ReTribe',
-    company: 'KOALA42 · 2025–2026',
-    description:
-      'Flutter mobilní aplikace pro iOS a Android spojující bývalé profesionální sportovce — dotazníky, feed a chat.',
-    stack: 'Flutter',
-    href: 'https://retribecollective.com/',
-  },
-  {
-    name: 'Tento portfolio web',
-    company: 'Osobní projekt',
-    description:
-      'Next.js web s playlisty tahanými živě ze Spotify API pro DJing.',
+    id: 'portfolio',
     stack: 'Next.js',
     href: 'https://github.com/domanhtu/dj_portfolio',
   },
 ];
 
 export default function Projects() {
+  const { t } = useTranslation();
+
   return (
     <section className="mx-auto max-w-3xl px-6 pb-24 lg:px-12">
       <p className="mb-2 font-mono text-sm tracking-[0.3em] text-[#224f95] dark:text-blue-300">
-        PROJEKTY
+        {t('projects.eyebrow')}
       </p>
       <h2 className="mb-12 text-balance font-mono text-3xl font-bold text-gray-900 dark:text-neutral-200">
-        Na čem jsem pracoval
+        {t('projects.heading')}
       </h2>
 
       <ol className="relative border-l-2 border-[#224f95]/20 pl-9 dark:border-blue-300/20">
         {projects.map((project, i) => (
           <li
-            key={project.name}
+            key={project.id}
             className={i === 0 ? 'relative' : 'relative mt-10'}
           >
             <span
@@ -60,13 +42,13 @@ export default function Projects() {
 
             <ScrollReveal delayMs={i * 120}>
               <p className="font-mono text-xs uppercase tracking-widest text-[#224f95] dark:text-blue-300">
-                {project.company}
+                {t(`projects.items.${project.id}.company`)}
               </p>
               <h3 className="mt-1 font-mono text-lg font-semibold text-gray-900 dark:text-neutral-200">
-                {project.name}
+                {t(`projects.items.${project.id}.name`)}
               </h3>
               <p className="mt-1 max-w-[60ch] text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-                {project.description}
+                {t(`projects.items.${project.id}.description`)}
               </p>
               <p className="mt-2 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
                 <span>{project.stack}</span>
@@ -84,7 +66,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="text-[#224f95] underline underline-offset-4 transition-colors hover:text-[#16325e] dark:text-blue-300 dark:hover:text-blue-200"
                     >
-                      Odkaz
+                      {t('projects.link')}
                     </a>
                   </>
                 )}

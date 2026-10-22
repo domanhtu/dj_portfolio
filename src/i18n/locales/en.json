@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "playlist": "Playlist",
+    "about": "About"
+  },
+  "hero": {
+    "eyebrow": "WELCOME",
+    "headshotAlt": "Tuti Do",
+    "djAlt1": "Tuti Do behind the DJ booth",
+    "djAlt2": "Tuti Do mixing for a crowd",
+    "dev": {
+      "title": "Frontend web & mobile developer",
+      "role": "Full-stack developer",
+      "description": "Graduate with an engineering degree from the Czech Technical University in Prague, Faculty of Information Technology, specializing in Web Engineering"
+    },
+    "dj": {
+      "title": "Open-format\nDJ",
+      "role": "Freelance event DJ",
+      "description": "Experienced DJ playing at proms, afterparties, corporate events, weddings, and Prague bars.",
+      "link": "Playlist"
+    }
+  },
+  "projects": {
+    "eyebrow": "PROJECTS",
+    "heading": "What I've worked on",
+    "link": "Link",
+    "items": {
+      "squared": {
+        "name": "Squared & Auctify",
+        "company": "Sinfin · 2023–2025",
+        "description": "Ruby on Rails developer — bug-fixing and new features for the Squared CMS, co-authored a new auction engine for Auctify."
+      },
+      "talsec": {
+        "name": "Talsec portal",
+        "company": "KOALA42 · 2025–2025",
+        "description": "Finished a React CRM portal for Talsec (App & API protection SDK) with charts and reporting."
+      },
+      "retribe": {
+        "name": "ReTribe",
+        "company": "KOALA42 · 2025–2026",
+        "description": "Flutter mobile app for iOS and Android connecting former professional athletes — questionnaires, a feed, and chat."
+      },
+      "portfolio": {
+        "name": "Portfolio website",
+        "company": "Personal project",
+        "description": "Next.js site with playlists pulled live from the Spotify API for DJing."
+      }
+    }
+  },
+  "playlists": {
+    "eyebrow": "PLAYLISTS",
+    "songs": "Songs",
+    "spotifyLink": "Open on Spotify"
+  }
+}
