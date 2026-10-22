@@ -35,10 +35,11 @@ export default function Page() {
               key={plist.id}
               onClick={() => setPlaylist(plist.name)}
               aria-pressed={isActive}
-              className={`rounded-full border px-5 py-2.5 text-base transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#224f95] dark:focus-visible:ring-blue-300 sm:px-4 sm:py-1.5 sm:text-sm ${isActive
+              className={`rounded-full border px-5 py-2.5 text-base transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#224f95] dark:focus-visible:ring-blue-300 sm:px-4 sm:py-1.5 sm:text-sm ${
+                isActive
                   ? 'border-[#224f95] bg-[#224f95] text-white dark:border-blue-300 dark:bg-blue-300 dark:text-zinc-900'
                   : 'border-[#224f95]/20 text-gray-700 hover:border-[#224f95]/60 hover:text-[#224f95] dark:border-blue-300/20 dark:text-gray-300 dark:hover:border-blue-300/60 dark:hover:text-blue-300'
-                }`}
+              }`}
             >
               {plist.name}
             </button>
