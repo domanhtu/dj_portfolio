@@ -2,10 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import ThemeSwitcher from './themeSwitcher';
+import LanguageSwitcher from './languageSwitcher';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   const isActiveLink = (href: string) => {
     return pathname === href;
@@ -19,14 +22,15 @@ export default function Navbar() {
           isActiveLink('/playlists') ? 'underline font-medium' : ''
         }`}
       >
-        Playlist
+        {t('nav.playlist')}
       </Link>
       <Link
         href="/"
         className={`mx-5 ${isActiveLink('/') ? 'underline font-medium' : ''}`}
       >
-        O mně
+        {t('nav.about')}
       </Link>
+      <LanguageSwitcher />
       <ThemeSwitcher />
     </nav>
   );
