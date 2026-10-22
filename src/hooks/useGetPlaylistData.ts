@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { playlistDataSchema } from '@/schemas/playlist';
 
 const useGetPlaylistData = () => {
   const [data, setData] = useState<PlaylistData | null>(null);
@@ -18,7 +19,14 @@ const useGetPlaylistData = () => {
       }
 
       const newData = await res.json();
-      setData(newData);
+      const parsed = playlistDataSchema.safeParse(newData);
+      if (!parsed.success) {
+        throw new Error(
+          `Unexpected playlist data shape: ${parsed.error.message}`
+        );
+      }
+
+      setData(parsed.data);
     } catch (err) {
       throw new Error(err instanceof Error ? err.message : String(err));
     } finally {
